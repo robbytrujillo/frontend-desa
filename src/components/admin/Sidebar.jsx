@@ -36,7 +36,19 @@ export default function sidebar() {
                        <>
                         <div className="sb-sidenav-menu-heading">CONTENT MANAGEMENT</div>
                         <a className={
-                            "nav-link collapsed " + (activeRoute[2] === "categories")
+                            "nav-link collapsed " + (activeRoute[2] === "categories"
+                                ? "active-sidebar"
+                                : activeRoute[2] === "posts"
+                                ? "active-sidebar"
+                                : activeRoute[2] === "pages"
+                                ? "active-sidebar"
+                                : activeRoute[2] === "products"
+                                ? "active-sidebar"
+                                : "")
+                            }
+                            href = "#" 
+                            data
+                            )
                         }
                        </>
                     )}
