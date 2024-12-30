@@ -129,8 +129,36 @@ export default function sidebar() {
                                     
                                     {(hasAnyPermission(["photos.index"]) ||
                                         hasAnyPermission(["sliders.index"])) && (
-                                        
+                                        <>
+                                            <div className="sb-sidenav-menu-heading">MEDIA MANAGEMENT</div>
+                                            <a className={
+                                                "nav-link collapsed " + 
+                                                (activeRoute[2] === "photos" 
+                                                    ? "active-sidebar"
+                                                    : activeRoute[2] === "sliders"
+                                                    ? "active-sidebar"
+                                                    : "")
+                                            }
+                                            href="#"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapseMedias"
+                                            aria-expanded="false"
+                                            aria-controls="collapseMedias"
+                                            >
+                                                <div className="sb-nav-link-icon">
+                                                    <i className="fas fa-images"></i>
+                                                </div>
+                                                Media
+                                                <div className="sb-sidenav-collapse-arrow">
+                                                    <i className="fas fa-angle-dowm=n"
+                                                    style={{ color: "color: rgb(65 60 60" }}
+                                                    ></i>
+                                                </div>
+                                            </a>
+                                        </>
                                     )}
+
+                                    
                                 </nav>
                             </div>
                 </div>
