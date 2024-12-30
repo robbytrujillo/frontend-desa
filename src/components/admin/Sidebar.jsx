@@ -47,11 +47,92 @@ export default function sidebar() {
                                 : "")
                             }
                             href = "#" 
-                            data
-                            )
-                        }
-                       </>
-                    )}
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts"
+                            aria-expanded="false"
+                            aria-controls="collapseLayouts">
+                                <div className="sb-nav-link-icon">
+                                    <i className="fas fa-pencil"></i>
+                                </div>
+                                Contents
+                                <div className="sb-sidenav-collapse-arrow">
+                                    <i 
+                                        className="fas fa-angle-down"
+                                        style={{ color: "color: rgb(65 60 60" }}
+                                        ></i>
+                                </div>
+                            </a>
+                            </>
+                        )}
+
+                        <div
+                            className={
+                                "collapse " +
+                                (activeRoute[2] === "categories" 
+                                    ? "show" 
+                                    : activeRoute[2] === "posts"
+                                    ? "show"
+                                    : activeRoute[2] === "pages"
+                                    ? "show"
+                                    : activeRoute[2] === "products"
+                                    ? " show"
+                                    : "")
+                            }
+                            id="collapseLayouts"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion"
+                            >
+                                <nav className="sb-sidenav-menu-nested nav">
+                                    {hasAnyPermission(["categories.index"]) && (
+                                        <Link
+                                            className={
+                                                activeRoute[2] === "categories"
+                                                    ? "nav-link active-sidebar"
+                                                    : "nav-link"
+                                            } to="/admin/categories">
+                                            Categories
+                                        </Link>
+                                    )}
+
+                                    {hasAnyPermission(["posts.index"]) && (
+                                        <Link
+                                            className={
+                                                activeRoute[2] === "posts"
+                                                    ? "nav-link active-sidebar"
+                                                    : "nav-link"
+                                            } to="/admin/posts">
+                                            Posts
+                                        </Link>
+                                    )}
+                                    
+                                    {hasAnyPermission(["pages.index"]) && (
+                                        <Link
+                                            className={
+                                                activeRoute[2] === "pages"
+                                                    ? "nav-link active-sidebar"
+                                                    : "nav-link"
+                                            } to="/admin/pages">
+                                            Pages
+                                        </Link>
+                                    )}
+
+                                    {hasAnyPermission(["products.index"]) && (
+                                        <Link
+                                            className={
+                                                activeRoute[2] === "products"
+                                                    ? "nav-link active-sidebar"
+                                                    : "nav-link"
+                                            } to="/admin/products">
+                                            Products
+                                        </Link>
+                                    )}
+                                    
+                                    {(hasAnyPermission(["photos.index"]) ||
+                                        hasAnyPermission(["sliders.index"])) && (
+                                        
+                                    )}
+                                </nav>
+                            </div>
                 </div>
             </div>
         </nav>
