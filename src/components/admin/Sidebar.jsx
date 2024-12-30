@@ -22,7 +22,26 @@ export default function sidebar() {
 
     return (
         <nav className="sb-sidenav accordion sb-sidenav-dark" id="sideNavAccordion">
-            
+            <div className="sb-sidenav-menu">
+                <div className="nav">
+                    <div className="sb-sidenav-menu-heading"></div>
+                    <Link className={activeRoute[2] === "dashboard" ? "nav-link active-sidebar" : "nav-link"} to="/admin/dashboard">
+                        <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>Dashboard
+                    </Link>
+
+                    {( hasAnyPermission(["categories.index"]) || 
+                       hasAnyPermission(["posts.index"]) ||
+                       hasAnyPermission(["pages.index"]) ||
+                       hasAnyPermission(["products.index"]) ) && (
+                       <>
+                        <div className="sb-sidenav-menu-heading">CONTENT MANAGEMENT</div>
+                        <a className={
+                            "nav-link collapsed " + (activeRoute[2] === "categories")
+                        }
+                       </>
+                    )}
+                </div>
+            </div>
         </nav>
     )
 }
