@@ -1,10 +1,11 @@
-// import routes
+//import routes
 import Routes from './routes';
 
-// import { useState } from 'react'
-import { Toaster } from 'react-hot-toast'; // import Toast
+//import Toaster
+import { Toaster } from 'react-hot-toast';
 
 function App() {
+
   return (
     <>
       <Routes />
