@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import LayoutAdmin from "../../../layouts/Admin";
 
 // import service api
-import Api from "../../../services/api";
+import Api from "../../../services/Api";
 
 // import js cookie
 import Cookies from "js-cookie";
