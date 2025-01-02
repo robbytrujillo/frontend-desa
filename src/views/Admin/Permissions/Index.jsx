@@ -154,7 +154,7 @@ export default function index() {
                                         currentPage={pagination.currentPage}
                                         perPage={pagination.perPage}
                                         total={pagination.total}
-                                        onChange={(pageNumber) => fetchData(pageNumber, keyword)}
+                                        onChange={(pageNumber) => fetchData(pageNumber, keywords)}
                                         position="end"
                                     />
                                </div>
