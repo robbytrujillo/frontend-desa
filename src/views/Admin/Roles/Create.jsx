@@ -115,6 +115,54 @@ export default function RolesCreate() {
                                 >
                                     <i className="fa fa-long-arrow-left me-2"></i> Back
                                 </Link>
+                                <div className="card border-0 rounded shadow-sm border-top-success">
+                                    <div className="card-body">
+                                        <h6>
+                                            <i className="fa fa-shield-alt"></i> Create Role
+                                        </h6>
+                                        <hr />
+                                        <form onSubmit={storeRole}>
+                                            <div className="mb-3">
+                                                <label className="form-label fw-bold">Role Name</label>
+                                                <input 
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={name}
+                                                    onChange={(e) => setName(e.target.value)}
+                                                    placeholder="Enter Role Name"
+                                                />
+                                            </div>
+                                            {errors.name && (
+                                                <div className="alert alert-danger" >{errors.name[0]}</div>
+                                            )}
+                                            <hr />
+                                            <div className="mb-3">
+                                                <label className="fw-bold">Permissions</label>
+                                                <br />
+                                                {permissions.map((permission) => (
+                                                    <div 
+                                                        className="form-check form-check-inline"
+                                                        key={Math.random()}
+                                                    >
+                                                        <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        value={permission.name}
+                                                        onChange={handleCheckboxChange}
+                                                        id={`check-${permission.id}`}
+                                                        />
+                                                        <label  
+                                                        className="form-check-label fw-normal"
+                                                        htmlFor={`check-${permission.id}`}
+                                                        >
+                                                            {permission.name}
+                                                        </label>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
