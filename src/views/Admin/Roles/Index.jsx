@@ -40,7 +40,7 @@ export default function RolesIndex() {
     const token = Cookies.get("token");
 
     // function fetchData
-    const fetchData = async (pageNumber = 1, keywords = "") => {
+    const fetchData = async (pageNumber = 1, keywords = '') => {
         // define variable "page"
         const page = pageNumber ? pageNumber : pagination.currentPage;
 
