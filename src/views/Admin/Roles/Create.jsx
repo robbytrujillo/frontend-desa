@@ -20,7 +20,7 @@ export default function RolesCreate() {
     // title page
     document.title = "Create Role - Desa Digital";
 
-    // navigata
+    // navigate
     const navigate = useNavigate();
 
     // define state for from
@@ -98,7 +98,7 @@ export default function RolesCreate() {
             })
             .catch((error) => {
                 // set error message to state "errors"
-                setError(error.response.data);
+                setErrors(error.response.data);
             });
         };
 
@@ -159,6 +159,20 @@ export default function RolesCreate() {
                                                         </label>
                                                     </div>
                                                 ))}
+
+                                                {errors.permissions && (
+                                                    <div className="alert alert-danger mt-2">{errors.permissions[0]}</div>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <button 
+                                                    type="submit" 
+                                                    className="btn btn-md btn-primary me-2">
+                                                    <i className="fa fa-save"></i> Save
+                                                </button>
+                                                <button type="reset" className="btn btn-md btn-warning">
+                                                    <i className="fa fa-redo"></i> Reset
+                                                </button>
                                             </div>
                                         </form>
                                     </div>
