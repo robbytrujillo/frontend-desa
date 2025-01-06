@@ -80,6 +80,96 @@ export default function UserIndex() {
     
     return (
         <LayoutAdmin>
+            <main>
+                <div className="container-fluid mb-5 mt-5">
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div className="row">
+                                {hasAnyPermission(["users.create"]) && (
+                                    <div className="col-md-3 col-12 mb-2">
+                                        <Link 
+                                            to="/admin/users/create"
+                                            className="btn btn-md btn-primary border-0 shadow-sm w-100"
+                                            type="button"
+                                        >
+                                            <i className="fa fa-plus-circle"></i>
+                                        </Link>
+                                    </div>
+                                )}
+                                <div className="col-md-9 col-12 mb-2">
+                                    <div className="input-group">
+                                        <input
+                                            type="text"
+                                            className="form-control border-0 shadow-sm"
+                                            onChange={(e) => searchData(e)}
+                                            placeholder="search here..."
+                                        />
+                                        <span className="input-group-text border-0 shadow-sm">
+                                            <i className="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mt-1">
+                        <div className="col-md-12">
+                            <div className="card-border-0 rounded shadow-sm border-top-success">
+                                <div className="card-body">
+                                    <div className="table-responsive">
+                                        <table className="table table-bordered table-centered mb-0 rounded">
+                                            <thead className="thead-dark">
+                                                <tr className="border-0">
+                                                    <th className="border-0" style={{ width: "5%" }}>
+                                                        No.
+                                                    </th>
+                                                    <th className="border-0">Full Name</th>
+                                                    <th className="border-0">Email Address</th>
+                                                    <th className="border-0">Roles</th>
+                                                    <th className="border-0" style={{ width: "15%" }}>
+                                                        Actions
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    // cek apakah data ada
+                                                    users.length > 0 ? (
+                                                        // looping data "users" dengan "map"
+                                                        users.map((user, index) => (
+                                                            <tr key={index}>
+                                                                <td className="fw-bold text-center">
+                                                                    {++index +
+                                                                        (pagination.currentPage - 1) *
+                                                                        pagination.perPage
+                                                                    }
+                                                                </td>
+                                                                <td>{user.name}</td>
+                                                                <td>{user.email}</td>
+                                                                <td>{user.roles.map((role, index) => (
+                                                                    <span 
+                                                                        className="btn btn-warning btn-sm shadow-sm border-0 ms-2 mb-2 fw-normal"
+                                                                        key={index}
+                                                                    >
+                                                                        {role.name}
+                                                                    </span>
+                                                                ))}
+                                                                </td>
+                                                                <td className="text-center">
+
+                                                                </td>
+                                                            </tr>
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
             <h1>Halaman Users Index</h1>
         </LayoutAdmin>
     );
