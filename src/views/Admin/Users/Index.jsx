@@ -156,21 +156,52 @@ export default function UserIndex() {
                                                                 ))}
                                                                 </td>
                                                                 <td className="text-center">
+                                                                    {hasAnyPermission(["users.edit"]) && (
+                                                                        <Link
+                                                                            to={`/admin/users/edit/${user.id}`}
+                                                                            className="btn btn-primary btn-sm me-2">
+                                                                            <i className="fa fa-pencil-alt"></i>
+                                                                        </Link>
+                                                                    )}
 
+                                                                    {hasAnyPermission(["users.delete"]) && (
+                                                                        <button className="btn btn-danger btn-sm">
+                                                                            <i className="fa fa-trash"></i>
+                                                                        </button>
+                                                                    )}    
                                                                 </td>
                                                             </tr>
+                                                        ))
+                                                    ) : (
+                                                        // tampilkam pesan data belum tersedia
+                                                        <tr>
+                                                            <td colSpan={5}>
+                                                                <div 
+                                                                    className="alert alert-danger border-0 rounded shadow-sm w-100 text-center"
+                                                                    role="alert"
+                                                                >
+                                                                    Data Belum Tersedia!.
+                                                                </div>
+                                                            </td>
+                                                        </tr>
                                                     )
                                                 }
                                             </tbody>
                                         </table>
                                     </div>
+                                    <Pagination
+                                        currentPage={pagination.currentPage}
+                                        perPage={pagination.perPage}
+                                        total={pagination.total}
+                                        onChange={(pageNumber) => fetchData(pageNumber, keywords)}
+                                        position="end"
+                                    />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-            <h1>Halaman Users Index</h1>
         </LayoutAdmin>
     );
 }
