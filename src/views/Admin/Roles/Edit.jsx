@@ -130,22 +130,90 @@ export default function RolesEdit() {
 
 
     return (
-        <LayoutAdmin>
-            <main>
+            <LayoutAdmin>
+              <main>
                 <div className="container-fluid mb-5 mt-5">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <Link 
-                                to="/roles"
-                                className="btn btn-md btn-primary border-0 shadow-sm mb-3"
-                                type="button"
-                            >
-                                <i className="fa fa-long-arrow-left me-2"></i> Back
-                            </Link>
+                  <div className="row">
+                    <div className="col-md-12">
+                      <Link
+                        to="/roles"
+                        className="btn btn-md btn-primary border-0 shadow-sm mb-3"
+                        type="button"
+                      >
+                        <i className="fa fa-long-arrow-alt-left me-2"></i> Back
+                      </Link>
+                      <div className="card border-0 rounded shadow-sm border-top-success">
+                        <div className="card-body">
+                          <h6>
+                            <i className="fa fa-shield-alt"></i> Edit Role
+                          </h6>
+                          <hr />
+                          <form onSubmit={updateRole}>
+                            <div className="mb-3">
+                              <label className="form-label fw-bold">Role Name</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="Enter Role Name"
+                              />
+                            </div>
+                            {errors.name && (
+                              <div className="alert alert-danger">{errors.name[0]}</div>
+                            )}
+                            <hr />
+                            <div className="mb-3">
+                              <label className="fw-bold">Permissions</label>
+                              <br />
+                              {permissions.map((permission) => (
+                                <div
+                                  className="form-check form-check-inline"
+                                  key={Math.random()}
+                                >
+                                  <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    value={permission.name}
+                                    defaultChecked={permissionsData.some(
+                                      (name) => name === permission.name ?? true
+                                    )}
+                                    onChange={handleCheckboxChange}
+                                    id={`check-${permission.id}`}
+                                  />
+                                  <label
+                                    className="form-check-label fw-normal"
+                                    htmlFor={`check-${permission.id}`}
+                                  >
+                                    {permission.name}
+                                  </label>
+                                </div>
+                              ))}
+        
+                              {errors.permissions && (
+                                <div className="alert alert-danger mt-2">
+                                  {errors.permissions[0]}
+                                </div>
+                              )}
+                            </div>
+                            <div>
+                              <button
+                                type="submit"
+                                className="btn btn-md btn-primary me-2"
+                              >
+                                <i className="fa fa-save"></i> Update
+                              </button>
+                              <button type="reset" className="btn btn-md btn-warning">
+                                <i className="fa fa-redo"></i> Reset
+                              </button>
+                            </div>
+                          </form>
                         </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </main>
-        </LayoutAdmin>
+              </main>
+            </LayoutAdmin>
     );
 }
