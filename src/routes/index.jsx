@@ -29,6 +29,9 @@ import RolesCreate from "../views/Admin/Roles/Create";
 // import view roles edit
 import RolesEdit from "../views/Admin/Roles/Edit";
 
+// import view users index
+import UsersIndex from "../views/Admin/Users/Index";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -86,6 +89,16 @@ export default function RoutesIndex() {
                         <RolesEdit />
                     </PrivateRoutes>
                     }
+            />
+
+            {/* private route "/admin/users" */}
+            <Route
+                path="/admin/users"
+                element={
+                    <PrivateRoutes>
+                        <UsersIndex />
+                    </PrivateRoutes>
+                }
             />
         </Routes>
     );
