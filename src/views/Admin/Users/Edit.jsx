@@ -1,3 +1,6 @@
+// import react
+import { useState, useEffect } from "react";
+
 // import layout
 import LayoutAdmin from "../../../layouts/Admin";
 
