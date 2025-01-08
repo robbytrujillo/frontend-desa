@@ -178,8 +178,28 @@ export default function UsersEdit() {
                                                     </div>
                                                 )}
                                             </div>
-                                            
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label fw-bold">
+                                                        Email Address
+                                                    </label>
+                                                    <input 
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={email}
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        placeholder="Enter Email Address"
+                                                    />
+                                                </div>
+                                                {errors.email && (
+                                                    <div className="alert alert-danger">
+                                                        {errors.email[0]}
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
+
+                                        
                                     </form>
                                 </div>
                             </div>    
