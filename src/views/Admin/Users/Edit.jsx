@@ -199,7 +199,84 @@ export default function UsersEdit() {
                                             </div>
                                         </div>
 
-                                        
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label fw-bold">Password</label>
+                                                    <input 
+                                                        type="password"
+                                                        className="form-control"
+                                                        value={password}
+                                                        onChange={(e) => setPassword(e.target.value)}
+                                                        placeholder="Enter Password"
+                                                    />
+                                                </div>
+                                                {errors.password && (
+                                                    <div className="alert alert-danger">
+                                                        {errors.password[0]}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label fw-bold">
+                                                        Password Confirmation
+                                                    </label>
+                                                    <input 
+                                                        type="password"
+                                                        className="form-control"
+                                                        value={passwordConfirmation}
+                                                        onChange={(e) => setPasswordConfirmation(e.target.value)}
+                                                        placeholder="Enter Password Confirmation"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Role</label>
+                                            <br />
+                                            { roles.map((role) => (
+                                                <div 
+                                                    className="form-check form-check-inline"
+                                                    key={Math.random()}
+                                                >
+                                                    <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        value={role.name}
+                                                        defaultChecked={rolesData.some(
+                                                            (name) => name === role.name ?? true
+                                                        )}
+                                                        onChange={handleCheckboxChange}
+                                                        id={`check-${role.id}`}
+                                                    />
+                                                    <label
+                                                        className="form-check-label fw-normal"
+                                                        htmlFor={`check-${role.id}`}
+                                                    >
+                                                        {role.name}
+                                                    </label>
+                                                </div>
+                                            ))}
+
+                                            {errors.roles && (
+                                                <div className="alert alert-dange mt-2">
+                                                    {errors.roles[0]}
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div>
+                                            <button
+                                                type="submit"
+                                                className="btn btn-md btn-primary me-2"
+                                            >
+                                                <i className="fa fa-save"></i> Update
+                                            </button>
+                                            <button type="reset" className="btn btn-md btn-warning">
+                                                <i className="fa fa-redo"></i> Reset
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>    
