@@ -38,6 +38,9 @@ import UsersCreate from "../views/Admin/Users/Create";
 // import view users edit
 import UsersEdit from "../views/Admin/Users/Edit";
 
+// import view categories index
+import CategoriesIndex from "../views/Admin/Categories/Index";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -123,6 +126,16 @@ export default function RoutesIndex() {
                 element={
                     <PrivateRoutes>
                         <UsersEdit />
+                    </PrivateRoutes>
+                }
+            />
+
+            {/* private route "/admin/categories" */}
+            <Route
+                path="/admin/categories"
+                element={
+                    <PrivateRoutes>
+                        <CategoriesIndex />
                     </PrivateRoutes>
                 }
             />
