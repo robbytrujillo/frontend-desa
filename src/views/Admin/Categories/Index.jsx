@@ -88,17 +88,101 @@ export default function CategoriesIndex() {
                             <div className="row">
                                 {hasAnyPermission(["categories.create"]) && (
                                     <div className="col-md-3 col-12 mb-2">
-                                        <div className="col-md-3 col-12 mb-2">
-                                            <Link 
-                                                to="/admin/categories/create"
-                                                className="btn btn-md btn-primary border-0 shadow-sm w-100"
-                                                type="button"
-                                            >
-                                                <i className="fa fa-plus-circle"></i> Add New
-                                            </Link>
-                                        </div>
+                                        <Link 
+                                            to="/admin/categories/create"
+                                            className="btn btn-md btn-primary border-0 shadow-sm w-100"
+                                            type="button"
+                                        >
+                                            <i className="fa fa-plus-circle"></i> Add New
+                                        </Link>
                                     </div>
                                 )}
+                                <div className="col-md-9 col-12 mb-2">
+                                    <div className="input-group">
+                                        <input
+                                            type="text"
+                                            className="form-control border-0 shadow-sm"
+                                            onChange={(e) =>searchData(e)}
+                                            placeholder="search here..."
+                                        />
+                                        <span className="input-group-text border-0 shadow-sm">
+                                            <i className="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mt-1">
+                        <div className="col-md-12">
+                            <div className="card border-0 rounded shadow-sm border-top-success">
+                                <div className="card-body">
+                                    <div className="table-responsive">
+                                        <table className="table table-bordered table-centered mb-0 rounded">
+                                            <thead className="thead-dark">
+                                                <tr className="border-0">
+                                                    <th className="border-0" style={{ width: "5%" }}>No</th>
+                                                    <th className="border-0">Category Name</th>
+                                                    <th className="border-0" style={{ width: "15%" }}>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    // cek apakah data ada
+                                                    categories.length > 0 ? (
+                                                        // looping data "categories" dengan "map" 
+                                                        categories.map((category, index) => (
+                                                            <tr key={index}>
+                                                                <td className="fw-bold text-center">
+                                                                    {++index +
+                                                                        (pagination.currentPage - 1) *
+                                                                        pagination.perPage
+                                                                    }
+                                                                </td>
+                                                                <td>{category.name}</td>
+                                                                <td className="text-center">
+                                                                    {hasAnyPermission(["categories.edit"]) && (
+                                                                        <Link
+                                                                            to={`/admin/categories/edit/${category.id}`}
+                                                                            className="btn btn-primary btn-sm me-2"
+                                                                        >
+                                                                            <i className="fa fa-pencil-alt"></i>
+                                                                        </Link>
+                                                                    )}
+
+                                                                    {hasAnyPermission(["categories.delete"]) && (
+                                                                        <button className="btn btn-danger btn-sm">
+                                                                            <i className="fa fa-trash"></i>
+                                                                        </button>
+                                                                    )}
+                                                                </td>
+                                                            </tr>
+                                                        ))    
+                                                    ) : (
+                                                        // tampilkan pesan belum tersedia
+                                                        <tr>
+                                                            <td colSpan={3}>
+                                                                <div 
+                                                                    className="alert alert-danger border-0 rounded shadow-sm w-100 text-center"
+                                                                    role="alert"
+                                                                >
+                                                                    Data Belum Tersedia!
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <Pagination
+                                        currentPage={pagination.currentPage}
+                                        perPage={pagination.perPage}
+                                        total={pagination.total}
+                                        onChange={(pageNumber) => fetchData(pageNumber, keywords)}
+                                        position="end"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
