@@ -29,7 +29,7 @@ export default function CategoriesIndex() {
     // define state "pagination"
     const [pagination, setPagination] = useState({ 
         currentPage: 0,
-        per_page:0,
+        perPage:0,
         total: 0, 
     });
 
@@ -80,7 +80,7 @@ export default function CategoriesIndex() {
 
     return (
         <LayoutAdmin>
-            <h1>Halaman Categories Index</h1>
+            {/* <h1>Halaman Categories Index</h1> */}
             <main>
                 <div className="container-fluid mb-5 mt-5">
                     <div className="row">
