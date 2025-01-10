@@ -19,6 +19,15 @@ import hasAnyPermission from '../../../utils/Permissions';
 // import pagination components
 import Pagination from '../../../components/general/Pagination';
 
+// import react-confirm-alert
+import { confirmAlert } from 'react-confirm-alert';
+
+// import CSS react-confirm-alert
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
+// import toast
+import toast from "react-hot-toast";
+
 export default function CategoriesIndex() {
     // title page
     document.title = "Categories - Desa Digital";
@@ -76,7 +85,45 @@ export default function CategoriesIndex() {
 
         // call function "fetchData"
         fetchData(1, e.target.value);
-    }
+    };
+
+    // function "deleteCategory"
+    const deleteCategory = (id) => {
+        // show confirm alert
+        confirmAlert({
+            title: "Are You Sure?",
+            message: "want to delete this data?",
+            buttons: [
+                {
+                    label: "Yes",
+                    onClick: async () => {
+                        await Api.delete(`/api/admin/categories/$${id}`, {
+                            // header
+                            headers: {
+                                // header Bearer + Token
+                                Authorization: `Bearer ${token}`,
+                            },
+                        }).then((response) => {
+                            // show toast
+                            toast.success(response.data.message, {
+                                position: "top-right",
+                                duration: 4000,
+                            });
+
+                            // call function "fetchData"
+                            fetchData();
+                            
+                        });
+                    }, 
+                },
+                {
+                    label: "No",
+                    onClick: () => {},
+                },
+            ],
+
+        })
+    };
 
     return (
         <LayoutAdmin>
