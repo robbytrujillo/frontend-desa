@@ -44,6 +44,9 @@ import CategoriesIndex from "../views/Admin/Categories/Index";
 // import view categories create
 import CategoriesCreate from "../views/Admin/Categories/Create";
 
+// import view categories edit
+import CategoriesEdit from "../views/Admin/Categories/Edit";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -151,7 +154,17 @@ export default function RoutesIndex() {
                         <CategoriesCreate />
                     </PrivateRoutes>
                 }
-            />        
+            />    
+            
+            {/* private route "/admin/categories/edit" */}
+            <Route
+                path="/admin/categories/edit/:id"
+                element={
+                    <PrivateRoutes>
+                        <CategoriesEdit />
+                    </PrivateRoutes>
+                }
+            />
         </Routes>
     );
 }
