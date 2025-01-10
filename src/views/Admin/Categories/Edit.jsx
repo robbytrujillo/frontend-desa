@@ -30,6 +30,9 @@ export default function CategoryEdit() {
   const [name, setName] = useState("");
   const [errors, setErros] = useState([]);
 
+  // define state "roles"
+  // const [roles, setRoles] = useState([]);
+
   //token from cookies
   const token = Cookies.get("token");
 
