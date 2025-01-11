@@ -117,7 +117,7 @@ export default function CategoriesIndex() {
                     }, 
                 },
                 {
-                    label: "No",
+                    label: "NO",
                     onClick: () => {},
                 },
             ],
@@ -198,7 +198,7 @@ export default function CategoriesIndex() {
                                                                     )}
 
                                                                     {hasAnyPermission(["categories.delete"]) && (
-                                                                        <button className="btn btn-danger btn-sm">
+                                                                        <button onClick={() => deleteCategory(category.id)} className="btn btn-danger btn-sm">
                                                                             <i className="fa fa-trash"></i>
                                                                         </button>
                                                                     )}
