@@ -53,6 +53,9 @@ import PostsIndex from "../views/Admin/Posts/Index";
 // import view posts create
 import PostsCreate from "../views/Admin/Posts/Create";
 
+// import view posts edit
+import PostsEdit from "../views/Admin/Posts/Edit";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -188,6 +191,16 @@ export default function RoutesIndex() {
                 element={
                     <PrivateRoutes>
                         <PostsCreate />
+                    </PrivateRoutes>
+                }
+            />
+
+            {/* private route "/admin/posts/edit" */}
+            <Route
+                path="/admin/posts/edit/:id"
+                element={
+                    <PrivateRoutes>
+                        <PostsEdit />
                     </PrivateRoutes>
                 }
             />
