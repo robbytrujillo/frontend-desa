@@ -78,6 +78,40 @@ export default function PostsIndex() {
     fetchData(1, e.target.value);
   };
 
+  // function "deletePost"
+  const deletePost = async (id) => {
+    // show confirm alert
+    confirmAlert({
+      title: "Are You Sure ?",
+      message: "want to delete this data ?",
+      buttons: [
+        {
+          label: "YES",
+          onClick: async () => {
+            await Api.delete(`/api/admin/posts/${id}`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                },
+            }).then((response) => {
+              //show toast
+              toast.success(response.data.message, {
+                position: "top-right",
+                duration: 4000,
+              });
+
+              // call function "fetchData"
+              fetchData();
+        });
+        },
+      },
+      {
+        label: "NO",
+        onClick: () => {},
+        },
+      ],    
+    });
+  };    
+
   return (
     <LayoutAdmin>
       <main>
@@ -161,7 +195,10 @@ export default function PostsIndex() {
                                   )}
 
                                   {hasAnyPermission(["posts.delete"]) && (
-                                    <button className="btn btn-danger btn-sm">
+                                    <button 
+                                      onClick={() => deletePost(post.id)}
+                                      className="btn btn-danger btn-sm"
+                                    >
                                       <i className="fa fa-trash"></i>
                                     </button>
                                   )}
