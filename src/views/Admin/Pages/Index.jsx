@@ -39,7 +39,8 @@ export default function PageIndex() {
     // token from cookies
     const token = Cookies.get('token');
 
-    
+    // function fetchData
+
     return (
         <LayoutAdmin>
             <h1>Halaman Pages Index</h1>
