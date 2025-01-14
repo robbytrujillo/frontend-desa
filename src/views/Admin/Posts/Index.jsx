@@ -19,6 +19,15 @@ import hasAnyPermission from "../../../utils/Permissions";
 //import pagination component
 import Pagination from "../../../components/general/Pagination";
 
+//import react-confirm-alert
+import { confirmAlert } from "react-confirm-alert";
+
+//import CSS react-confirm-alert
+import "react-confirm-alert/src/react-confirm-alert.css";
+
+//import toast
+import toast from "react-hot-toast";
+
 export default function PostsIndex() {
   //title page
   document.title = "Posts - Desa Digital";
@@ -78,9 +87,9 @@ export default function PostsIndex() {
     fetchData(1, e.target.value);
   };
 
-  // function "deletePost"
-  const deletePost = async (id) => {
-    // show confirm alert
+  //function "deletePost"
+  const deletePost = (id) => {
+    //show confirm alert
     confirmAlert({
       title: "Are You Sure ?",
       message: "want to delete this data ?",
@@ -89,9 +98,11 @@ export default function PostsIndex() {
           label: "YES",
           onClick: async () => {
             await Api.delete(`/api/admin/posts/${id}`, {
+              //header
               headers: {
+                //header Bearer + Token
                 Authorization: `Bearer ${token}`,
-                },
+              },
             }).then((response) => {
               //show toast
               toast.success(response.data.message, {
@@ -99,18 +110,18 @@ export default function PostsIndex() {
                 duration: 4000,
               });
 
-              // call function "fetchData"
+              //call function "fetchData"
               fetchData();
-        });
+            });
+          },
         },
-      },
-      {
-        label: "NO",
-        onClick: () => {},
+        {
+          label: "NO",
+          onClick: () => {},
         },
-      ],    
+      ],
     });
-  };    
+  };
 
   return (
     <LayoutAdmin>
@@ -195,7 +206,7 @@ export default function PostsIndex() {
                                   )}
 
                                   {hasAnyPermission(["posts.delete"]) && (
-                                    <button 
+                                    <button
                                       onClick={() => deletePost(post.id)}
                                       className="btn btn-danger btn-sm"
                                     >
