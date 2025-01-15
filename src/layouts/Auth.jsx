@@ -9,7 +9,7 @@ export default function auth({ children }) {
   return (
     <div
       style={{
-        backgroundImage: "url(/images/desa-bojong-nangka.jpeg)",
+        backgroundImage: "url(/images/digi.png)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",

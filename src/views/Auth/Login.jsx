@@ -81,8 +81,8 @@ export default function login() {
         <div className="col-md-7">
           <div className="text-center mb-5">
             <img src={"/images/desa-digi.png"} width={"100"} />
-            <h4>
-              <strong className="text-white mt-3">DESA DIGITAL INDONESIA</strong>
+            <h4 >
+              <strong className="text-black mt-3">DESA DIGITAL INDONESIA</strong>
             </h4>
           </div>
           <div className="card rounded-4 shadow-sm border-top-success">
