@@ -89,7 +89,7 @@ export default function PageIndex() {
                                 {hasAnyPermission(["posts.create"]) && (
                                     <div className="col-md-3 col-12 mb-2">
                                         <Link 
-                                            to="/admin/posts/create" 
+                                            to="/admin/pages/create" 
                                             className="btn btn-md btn-primary border-0 shadow-sm w-100"
                                             type="button"
                                         >
