@@ -52,9 +52,10 @@ export default function PagesCreate() {
             {
                 // header
                 headers: {
+                    // header Bearer + Token
                     "Authorization": `Bearer ${token}`,
                     "content-type": "multipart/form-data",
-            }
+            },
         }
     )
         .then((response) => {
