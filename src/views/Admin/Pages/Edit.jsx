@@ -103,7 +103,27 @@ export default function PagesEdit() {
         <LayoutAdmin>
             <h1>Halaman Pages Edit</h1>
             <main>
-                
+                <div className="container-fluid mb-5 mt-5">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <Link
+                                to="/admin/pages"
+                                className="btn btn-md btn-primary border-0 shadow-sm mb-3"
+                                type="button"
+                            >
+                                <i className="fa fa-long-arrow-alt-left me-2"></i> Back
+                            </Link>
+                            <div className="card border-0 rounded shadow-sm border-top-success">
+                                <div className="card-body">
+                                    <h6>
+                                        <i className="fa fa-pencil-alt"></i> Edit Page
+                                    </h6>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </LayoutAdmin>
     );
