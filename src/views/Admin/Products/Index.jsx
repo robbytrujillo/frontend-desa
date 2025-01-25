@@ -121,15 +121,81 @@ export default function ProductsIndex() {
                                     <table className="table table-centered table-bordered mb-0 rounded">
                                         <thead className="thead-dark">
                                             <tr className="border-0">
-                                                
+                                                <th className="border-0" style={{ width: "5%" }}>
+                                                    No.
+                                                </th>
+                                                <th className="border-0">Title</th>
+                                                <th className="border-0">Owner</th>
+                                                <th className="border-0">Phone</th>
+                                                <th className="border-0">Price</th>
+                                                <th className="border-0" style={{ width: "15%" }}>
+                                                    Actions
+                                                </th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+                                            {
+                                                // cek apakah data ada
+                                                products.length > 0 ? (
+                                                    // looping data "products" dengan "map"
+                                                    products.map((product, index) => (
+                                                        <tr key={index}>
+                                                            <td className="fw-bold text-center">
+                                                                {++index +
+                                                                    (pagination.currentPage - 1) *
+                                                                      pagination.perPage  
+                                                                }
+                                                            </td>
+                                                            <td>{product.title}</td>
+                                                            <td>{product.owner}</td>
+                                                            <td>{product.phone}</td>
+                                                            <td>{product.price}</td>
+                                                            <td className="text-center">
+                                                                {hasAnyPermission(["products.edit"]) && (
+                                                                    <Link
+                                                                        to={`/admin/products/edit/${product.id}`}
+                                                                        className="btn btn-primary btn-sm me-2"
+                                                                    >
+                                                                        <i className="fa fa-pencil-alt"></i>
+                                                                    </Link>
+                                                                )}
+                                                                {hasAnyPermission(["products.delete"]) && (
+                                                                    <button className="btn btn-danger btn-sm">
+                                                                        <i className="fa fa-trash"></i>
+                                                                    </button>
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    ))
+                                                ) : (
+                                                    // tampilkan pesan data belum tersedia
+                                                    <tr>
+                                                        <td colSpan={5}>
+                                                            <div 
+                                                                className="alert alert-danger border-0 rounded shadow-sm w-100 text-center"
+                                                                role="alert"
+                                                            >
+                                                                Data Belum Tersedia!.
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                )    
+                                            }
+                                        </tbody>
                                     </table>
                                   </div>
+                                  <Pagination
+                                    currentPage={pagination.currentPage}
+                                    perPage={pagination.perPage}
+                                    total={pagination.total}
+                                    onChange={(pageNumber) => fetchData(pageNumber, keywords)}
+                                    position="end"
+                                  />
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>    
             </main>
         </LayoutAdmin>
     );
