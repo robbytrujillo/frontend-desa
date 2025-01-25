@@ -20,7 +20,7 @@ import hasAnyPermission from "../../../utils/Permissions";
 import Pagination from "../../../components/general/Pagination";
 
 // import react confirm-alert
-import { confirmAlert } from "react-confrim-alert";
+import { confirmAlert } from "react-confirm-alert";
 
 // import CSS react confirm alert
 import "react-confirm-alert/src/react-confirm-alert.css";
