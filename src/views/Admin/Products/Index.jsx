@@ -80,7 +80,57 @@ export default function ProductsIndex() {
     
     return (
         <LayoutAdmin>
-            <h1>Halaman Products Index</h1>
+            {/* <h1>Halaman Products Index</h1> */}
+            <main>
+                <div className="container-fluid mb-5 mt-5">
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div className="row">
+                                {hasAnyPermission(["products.create"]) && (
+                                    <div className="col-md-3 col-12 mb-2">
+                                        <Link
+                                            to="/admin/products/create"
+                                            className="btn btn-md btn-primary border-0 shadow-sm w-100"
+                                            type="button"
+                                        >
+                                            <i className="fa fa-plus-circle"></i> Add New
+                                        </Link>
+                                    </div>
+                                )}
+                                <div className="col-md-9 col-12 mb-2">
+                                    <div className="input-group">
+                                        <input
+                                            type="text"
+                                            className="form-control border-0 shadow-sm"
+                                            onChange={(e) => searchData(e)}
+                                            placeholder="Search here..."
+                                        />
+                                        <span className="input-group-text border-0 shadow-sm">
+                                            <i className="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mt-1">
+                        <div className="col-md-12">
+                            <div className="card border-0 rounded shadow-sm border-top-success">
+                                <div className="card-body">
+                                  <div className="table-responsive">
+                                    <table className="table table-centered table-bordered mb-0 rounded">
+                                        <thead className="thead-dark">
+                                            <tr className="border-0">
+                                                
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </main>
         </LayoutAdmin>
     );
 }
