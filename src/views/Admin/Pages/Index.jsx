@@ -19,6 +19,15 @@ import hasAnyPermission from "../../../utils/Permissions";
 //import pagination component
 import Pagination from "../../../components/general/Pagination";
 
+// import react confirm-alert
+import { confirmAlert } from "react-confrim-alert";
+
+// import CSS react confirm alert
+import "react-confirm-alert/src/react-confirm-alert.css";
+
+// import toast
+import toast from "react-hot-toast";
+
 export default function PagesIndex() {
   //title page
   document.title = "Pages - Desa Digital";
@@ -76,6 +85,42 @@ export default function PagesIndex() {
 
     //call function "fetchData"
     fetchData(1, e.target.value);
+  };
+
+  // function "deletePage"
+  const deletePage = async (id) => {
+    // show confirm alert
+    confirmAlert({
+      title: "Are You Sure?",
+      message: "want to delete this data?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: async () => {
+            await Api.delete(`/api/admin/pages/${id}`, {
+              // header
+              headers: {
+                // header Bearer + Token
+                Authorization: `Bearer ${token}`,
+                },
+            }).then((response) => {
+              // show toast
+              toast.success(response.data.message, {
+                position: "top-right",
+                duration: 4000,
+              });
+
+              // call function "fetchData"
+              fetchData();
+            });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {},
+        }
+      ],
+    });
   };
 
   return (
@@ -153,7 +198,9 @@ export default function PagesIndex() {
                                   )}
 
                                   {hasAnyPermission(["pages.delete"]) && (
-                                    <button className="btn btn-danger btn-sm">
+                                    <button onClick={() => deletePage(page.id)} 
+                                      className="btn btn-danger btn-sm"
+                                    >
                                       <i className="fa fa-trash"></i>
                                     </button>
                                   )}
