@@ -68,6 +68,9 @@ import PagesEdit from "../views/Admin/Pages/Edit";
 // import view products index
 import ProductsIndex from "../views/Admin/Products/Index";
 
+// import view products create
+import ProductsCreate from "../views/Admin/Products/Create";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -254,6 +257,16 @@ export default function RoutesIndex() {
                     <PrivateRoutes>
                         <ProductsIndex />
                     </PrivateRoutes>
+                }
+            />
+
+            {/* private route "/admin/products/create" */}
+            <Route
+                path="/admin/products/create"
+                element={
+                <PrivateRoutes>
+                    <ProductsCreate />
+                </PrivateRoutes>
                 }
             />
         </Routes>
