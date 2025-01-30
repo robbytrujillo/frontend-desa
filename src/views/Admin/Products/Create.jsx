@@ -208,7 +208,33 @@ export default function ProductsCreate() {
                                             </div>
                                         </div>
 
-                                        
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Addrees</label>
+                                            <textarea
+                                                className="form-control"
+                                                rows="3"
+                                                value={address}
+                                                onChange={(e) => setAddress(e.target.value)}
+                                                placeholder="Enter Address"
+                                            ></textarea>    
+                                        </div>
+                                        {errors.address && (
+                                            <div className="alert alert-danger">
+                                                {errors.address[0]}
+                                            </div>
+                                        )}
+
+                                        <div>
+                                            <button
+                                                type="submit"
+                                                className="btn btn-md btn-primary me-2"
+                                            >
+                                                <i className="fa fa-save"></i> Save
+                                            </button>
+                                            <button type="reset" className="btn btn-md btn-warning">
+                                                <i className="fa fa-redo"></i> Reset
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
