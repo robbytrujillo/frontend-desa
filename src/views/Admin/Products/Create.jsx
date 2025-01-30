@@ -123,6 +123,65 @@ export default function ProductsCreate() {
                                             <div className="col-md-6">
                                                 <div className="mb-3">
                                                     <label className="form-label fw-bold">Title</label>
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={title}
+                                                        onChange={(e) => setTitle(e.target.value)}
+                                                        placeholder="Enter Title Product"
+                                                    />
+                                                </div>
+                                                {errors.title && (
+                                                    <div className="alert alert-danger">
+                                                        {errors.title[0]}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label fw-bold">Phone</label>
+                                                    <input 
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={phone}
+                                                        onChange={(e) => setPhone(e.target.value)}
+                                                        placeholder="Enter Phone"
+                                                    />    
+                                                </div>
+                                                {errors.phone && (
+                                                    <div className="alert alert-danger">
+                                                        {errors.phone[0]}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Content</label>
+                                            <ReactQuill
+                                                theme="snow"
+                                                rows="5"
+                                                value={content}
+                                                onChange={(content) => setContent(content)}
+                                            />
+                                        </div>
+                                        {errors.content && (
+                                            <div className="alert alert-danger">
+                                                {errors.content[0]}
+                                            </div>
+                                        )}
+
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label fw-bold">Owner</label>
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={owner}
+                                                        onChange={(e) => setOwner(e.target.value)}
+                                                        placeholder="Enter Owner Product"
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
