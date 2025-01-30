@@ -183,8 +183,32 @@ export default function ProductsCreate() {
                                                         placeholder="Enter Owner Product"
                                                     />
                                                 </div>
+                                                {errors.owner && (
+                                                    <div className="alert alert-danger">
+                                                        {errors.owner[0]}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label fw-bold">Price</label>
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={price}
+                                                        onChange={(e) => setPrice(e.target.value)}
+                                                        placeholder="Enter Price Product"
+                                                    />
+                                                </div>
+                                                {errors.price && (
+                                                    <div className="alert alert-danger">
+                                                        {errors.price[0]}
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
+
+                                        
                                     </form>
                                 </div>
                             </div>
