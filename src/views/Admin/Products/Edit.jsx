@@ -29,6 +29,18 @@ export default function ProdutsEdit() {
     // navigate
     const navigate = useNavigate();
 
+    // get ID from parameter URL
+    const { id } = useParams();
+
+    // define state for from
+    const [image, setImage] = useState("");
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
+    const [owner, setOwner] = useState("");
+    const [price, setPrice] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+    const [errors, setErros] = useState([]);
 
     return (
         <LayoutAdmin>
