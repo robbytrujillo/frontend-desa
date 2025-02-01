@@ -79,14 +79,22 @@ export default function login() {
         }}
       >
         <div className="col-md-7">
-          <div className="text-center mb-5">
-            <img src={"/images/desa-digi.png"} width={"100"} />
+          <div className="text-center mb-5 mt-50">
+            {/* <img src={"/images/desa-digi.png"} width={"100"} />
+            <h4 >
+              <strong className="text-black mt-3">DESA DIGITAL INDONESIA</strong>
+            </h4> */}
+          </div>
+          <div className="card rounded-4 shadow-sm border-top-success">
+         
+            <div className="card-body mt-2">
+              <div className="text-center">
+              <img src={"/images/desa-digi.png"} width={"100"} />
             <h4 >
               <strong className="text-black mt-3">DESA DIGITAL INDONESIA</strong>
             </h4>
-          </div>
-          <div className="card rounded-4 shadow-sm border-top-success">
-            <div className="card-body">
+              </div>
+            
               <div className="form-left h-100 py-3 px-3">
                 {errors.message && (
                   <div className="alert alert-danger">{errors.message}</div>
