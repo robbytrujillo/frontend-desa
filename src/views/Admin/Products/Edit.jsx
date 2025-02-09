@@ -130,7 +130,61 @@ export default function ProdutsEdit() {
                                         <i className="fa fa-pencil-alt"></i> Edit Product
                                     </h6>
                                     <hr />
-                                    
+                                    <form onSubmit={updateProduct}>
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Product Name</label>
+                                            <input 
+                                                type="file"
+                                                className="form-control"
+                                                accept="image/*"
+                                                onChange={(e) => setImage(e.target.files[0])}
+                                            />
+                                        </div>
+                                        {errors.image && (
+                                            <div className="alert alert-danger">
+                                                {errors.image[0]}
+                                            </div>
+                                        )}
+
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label fw-bold">Title</label>
+                                                    <input 
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={title}
+                                                        onChange={(e) => setTitle(e.target.value)}
+                                                        placeholder="Enter Title Product"
+                                                    />
+                                                </div>
+                                                {errors.title && (
+                                                    <div className="alert alert-danger">
+                                                        {errors.title[0]}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label fw-bold">Phone</label>
+                                                    <input 
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={phone}
+                                                        onChange={(e) => setPhone(e.target.value)}
+                                                        placeholder="Enter Phone"
+                                                    />
+                                                </div>
+                                                {errors.phone && (
+                                                    <div className="alert alert-danger">
+                                                        {errors.phone[0]}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        
+                                    </form>
                                 </div>
                             </div>
                         </div>
