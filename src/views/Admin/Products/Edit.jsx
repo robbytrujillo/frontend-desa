@@ -63,10 +63,80 @@ export default function ProdutsEdit() {
             setPhone(response.data.data.phone);
         });
     };
+
+    // hook "useEffect"
+    useEffect(() => {
+        // call function "fetchDataProduct"
+        fetchDataProduct();
+    }, []);
+
+    // function "updateProduct"
+    const updateProduct = async (e) => {
+        e.preventDefault();
+
+        // define formData
+        const formData = new FormData();
+
+        // append data to "formData"
+        formData.append("image", image);
+        formData.append("title", title);
+        formData.append("owner", owner);
+        formData.append("price", price);
+        formData.append("address", address);
+        formData.append("phone", phone);
+        formData.append("content", content);
+        formData.append("_method", "PUT");
+
+        // sending data
+        await Api.put(`/api/admin/products/${id}`, formData, {
+            // header
+            headers: {
+                // header Bearer + Token
+                Authorization: `Bearer ${token}`,
+                "content-type": "multipart/form-data",
+            },
+        })
+        .then((response) => {
+            // show toast
+            toast.success(response.data.message, {
+                position: "top-right",
+                duration: 4000,
+            });
+
+            // redirect
+            navigate("/admin/products");
+        })
+        .catch((error) => {
+            // set error message to state "errors"
+            setErros(error.response.data);
+        });
+    };    
     
     return (
         <LayoutAdmin>
-            <h1>Halaman Products Edit</h1>
+            {/* <h1>Halaman Products Edit</h1> */}
+            <main>
+                <div className="container-fluid mb-5 mt-5">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <Link to="/admin/products" className="btn btn-md btn-primary border-0 shadow-sm mb-3"
+                            type="button"
+                            >
+                                <i className="fa fa-long-arrow-alt-left me-2"></i> Back
+                            </Link>
+                            <div className="card border-0 rounded shadow=-sm border-top-success">
+                                <div className="card-body">
+                                    <h6>
+                                        <i className="fa fa-pencil-alt"></i> Edit Product
+                                    </h6>
+                                    <hr />
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </LayoutAdmin>
     )
 }
