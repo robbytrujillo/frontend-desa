@@ -19,6 +19,15 @@ import hasAnyPermission from '../../../utils/Permissions';
 // import pagination component
 import Pagination from '../../../components/general/Pagination';
 
+// import react-confirm-alert
+import { confirmAlert } from "react-confirm-alert";
+
+// import CSS react-confirm-alert
+import "react-confirm-alert/src/react-confirm-alert.css";
+
+// import toast
+import toast from 'react-hot-toast';
+
 export default function ProductsIndex() {
     // title page
     document.title = "Products - Desa Digital";
@@ -77,6 +86,42 @@ export default function ProductsIndex() {
         // call function "fetchData"
         fetchData(1, e.target.value);
     };
+
+    // function "deleteProduct"
+    const deleteProduct = async (id) => {
+        // show confirm alert
+        confirmAlert({
+            title: "Are You Sure ?",
+            message: "Want to delete this data?",
+            buttons: [
+                {
+                    label: "YES",
+                    onClick: async () => {
+                        await Api.delete(`/api/admin/products/${id}`, {
+                            // header
+                            headers: {
+                                // header Bearer + Token
+                                Authorization: `Bearer ${token}`,
+                            },
+                        }).then((response) => {
+                            // show toast
+                            toast.success(response.data.message, {
+                                position: "top-right",
+                                duration: 4000,
+                            });
+                            
+                            // call function "fetchData"
+                            fetchData();
+                        });
+                    },
+                },
+                {
+                    label: "NO",
+                    onClick: () => {},
+                },
+            ],
+        });
+    };    
     
     return (
         <LayoutAdmin>
@@ -160,7 +205,7 @@ export default function ProductsIndex() {
                                                                     </Link>
                                                                 )}
                                                                 {hasAnyPermission(["products.delete"]) && (
-                                                                    <button className="btn btn-danger btn-sm">
+                                                                    <button onClick={() => deleteProduct(product.id)} className="btn btn-danger btn-sm">
                                                                         <i className="fa fa-trash"></i>
                                                                     </button>
                                                                 )}
