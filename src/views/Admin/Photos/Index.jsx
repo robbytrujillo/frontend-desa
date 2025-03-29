@@ -74,10 +74,98 @@ export default function PhotosIndex() {
         // call function "fetchData"
         fetchData(1, e.target.value);
     };
-    
+
     return (
         <LayoutAdmin>
-            <h1>Halaman Photos Index</h1>
+            {/* <h1>Halaman Photos Index</h1> */}
+            <main>
+                <div className="container-fluid mb-5 mt-5">
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div className="row">
+                                <div className="col-md-9 col-12 mb-2">
+                                    <div className="input-group">
+                                        <input 
+                                            type="text" 
+                                            className="form-control border-0 shadow-sm"
+                                            onChange={(e) => searchData(e)} 
+                                            placeholder="search here..." 
+                                        />
+                                        <span className="input-group-text border-0 shadow-sm">
+                                            <i className="fa fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mt-1">
+                        <div className="col-md-12">
+                            <div className="card border-0 rounded shadow-sm border-top-success">
+                                <div className="card-body">
+                                    <div className="table-responsive">
+                                        <table className="table table-bordered table-centered mb-0 rounded">
+                                            <thead className="thead-dark">
+                                                <tr className="border-0">
+                                                    <th className="border-0" style={{ width: "5%" }}>No</th>
+                                                    <th className="border-0">Image</th>
+                                                    <th className="border-0">Caption</th>
+                                                    <th className="border-0" style={{ width: "15%" }}>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    // cek apakah data ada
+                                                    photos.length > 0 ? (
+                                                        // looping data "photos" dengan "map"
+                                                        photos.map((photo, index) => (
+                                                            <tr key={index}>
+                                                                <td className="fw-bold text-center">
+                                                                    {++index + (pagination.currentPage - 1) * pagination.perPage}
+                                                                </td>
+                                                                <td className="text-center">
+                                                                    <img src={photo.image} width={"300px"} className="rounded" />
+                                                                </td>
+                                                                <td>{photo.caption}</td>
+                                                                <td className="text-center">
+                                                                    {hasAnyPermission(["posts.delete"]) && (
+                                                                        <button className="btn btn-danger btn-sm">
+                                                                            <i className="fa fa-trash"></i>
+                                                                        </button>
+                                                                    )}
+                                                                </td>
+                                                            </tr> 
+                                                        ))
+                                                    ) : (
+                                                        // tampilkan pesan data belum tersedia
+                                                        <tr>
+                                                            <td colSpan={5}>
+                                                                <div
+                                                                    className="alert alert-danger border-0 rounded shadow-sm w-100 text-center"
+                                                                    role="alert"
+                                                                >
+                                                                    Data Belum Tersedia!
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <Pagination
+                                        currentPage={pagination.currentPage}
+                                        perPage={pagination.perPage}
+                                        total={pagination.total}
+                                        onChange={(pageNumber) => fetchData(pageNumber, keywords)}
+                                        position="end"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </LayoutAdmin>
     );
 }
