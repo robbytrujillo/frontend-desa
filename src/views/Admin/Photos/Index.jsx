@@ -193,7 +193,7 @@ const deletePhoto = (id) => {
                                 <td>{photo.caption}</td>
                                 <td className="text-center">
                                   {hasAnyPermission(["posts.delete"]) && (
-                                    <button className="btn btn-danger btn-sm">
+                                    <button onClick={() => deletePhoto(photo.id)} className="btn btn-danger btn-sm">
                                       <i className="fa fa-trash"></i>
                                     </button>
                                   )}
