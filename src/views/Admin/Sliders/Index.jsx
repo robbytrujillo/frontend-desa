@@ -23,7 +23,7 @@ import SlidersCreate from "./Create";
 import { confirmAlert } from "react-confirm-alert";
 
 // import CSS react-confirm-alert
-import "react-confirm-alert/aset/react-confirm-alert.css";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 // import toast
 import toast from "react-hot-toast";
