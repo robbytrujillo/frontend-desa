@@ -19,6 +19,15 @@ import Pagination from "../../../components/general/pagination";
 //import component slider create
 import SlidersCreate from "./Create";
 
+// import react-confirm-alert
+import { confirmAlert } from "react-confirm-alert";
+
+// import CSS react-confirm-alert
+import "react-confirm-alert/aset/react-confirm-alert.css";
+
+// import toast
+import toast from "react-hot-toast";
+
 export default function SlidersIndex() {
   //title page
   document.title = "Sliders - Desa Digital";
@@ -65,6 +74,42 @@ export default function SlidersIndex() {
     //call function "fetchData"
     fetchData();
   }, []);
+
+  // function "deleteSlider"
+  const deleteSlider = (id) => {
+    // show confirm alert
+    confirmAlert({
+        title: "Are You Sure ?",
+        message: "want to delete this data ?",
+        buttons: [
+            {
+                label: "YES",
+                onClick: async () => {
+                    await Api.delete(`/api/admin/sliders/${id}`, {
+                        // header
+                        headers: {
+                            // header Bearer + Token
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }).then((response) => {
+                        // show toast
+                        toast.success(response.data.message, {
+                            position: "top-right",
+                            duration: 4000,
+                        });
+
+                        // call function "fetchData"
+                        fetchData();
+                    });
+                },
+            },
+            {
+                label: "NO",
+                onClick: () => {},
+            },
+        ],
+    });
+ };
 
   return (
     <LayoutAdmin>
@@ -115,7 +160,9 @@ export default function SlidersIndex() {
                                 </td>
                                 <td className="text-center">
                                   {hasAnyPermission(["sliders.delete"]) && (
-                                    <button className="btn btn-danger btn-sm">
+                                    <button 
+                                      onClick={() => deleteSlider(slider.id)}
+                                      className="btn btn-danger btn-sm">
                                       <i className="fa fa-trash"></i>
                                     </button>
                                   )}
