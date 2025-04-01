@@ -83,6 +83,9 @@ import SlidersIndex from "../views/Admin/Sliders/Index";
 // import view aparaturs index
 import AparatursIndex from "../views/Admin/Aparaturs/Index";
 
+// import view aparaturs create
+import AparatursCreate from "../views/Admin/Aparaturs/Create";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -318,6 +321,16 @@ export default function RoutesIndex() {
                 element={
                     <PrivateRoutes>
                         <AparatursIndex />
+                    </PrivateRoutes>
+                }
+            />
+
+            {/* private route "/admin/aparaturs/create" */}
+            <Route
+                path="/admin/aparaturs/create"
+                element={
+                    <PrivateRoutes>
+                        <AparatursCreate />
                     </PrivateRoutes>
                 }
             />
