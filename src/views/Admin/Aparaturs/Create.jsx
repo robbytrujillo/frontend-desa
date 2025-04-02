@@ -83,6 +83,40 @@ export default function AparatursCreate() {
                             >
                                 <i className="fas fa-long-arrow-alt-left me-2"></i> Back
                             </Link>
+                            <div className="card border-0 rounded shadow-sm border-top-success">
+                                <div className="card-body">
+                                    <h6>
+                                        <i className="fa fa-pencil"></i> Create Aparatur
+                                    </h6>
+                                    <hr />
+                                    <form onSubmit={storeAparatur}>
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Image</label>
+                                            <input 
+                                                type="file"
+                                                className="form-control"
+                                                accept="image/"
+                                                onChange={(e) => setImage(e.target.files[0])}
+                                            />
+                                        </div>
+                                        {errors.image && (
+                                            <div className="alert alert-danger">
+                                                {errors.image[0]}
+                                            </div>
+                                        )}
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Full Name</label>
+                                            <input 
+                                                type="text"
+                                                className="form-control"
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                                placeholder="Enter Full Name"
+                                            />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

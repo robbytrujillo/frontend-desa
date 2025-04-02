@@ -72,6 +72,7 @@ export default function login() {
 
   return (
     <LayoutAuth>
+      
       <div
         className="row d-flex align-items-center justify-content-center"
         style={{
