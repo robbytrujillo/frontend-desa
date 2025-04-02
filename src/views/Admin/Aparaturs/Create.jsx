@@ -114,6 +114,13 @@ export default function AparatursCreate() {
                                                 placeholder="Enter Full Name"
                                             />
                                         </div>
+                                        {errors.name && (
+                                            <div className="alert alert-danger">{errors.name[0]}</div>
+                                        )}
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Role</label>
+                                            
+                                        </div>
                                     </form>
                                 </div>
                             </div>
