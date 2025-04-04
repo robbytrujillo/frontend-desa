@@ -130,6 +130,18 @@ export default function AparatursCreate() {
                                         {errors.name && (
                                             <div className="alert alert-danger">{errors.name[0]}</div>
                                         )}
+                                        <div>
+                                            <button
+                                                type="submit"
+                                                className="btn btn-md btn-primary me-2">
+                                                    <i className="fa fa-save"></i> Save
+                                            </button>   
+                                            <button 
+                                                type="reset" 
+                                                className="btn btn-md btn-warning">
+                                                    <i className="fa fa-redo"></i> Reset
+                                            </button>                                     
+                                        </div>
                                     </form>
                                 </div>
                             </div>
