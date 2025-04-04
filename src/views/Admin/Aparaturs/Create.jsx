@@ -119,8 +119,17 @@ export default function AparatursCreate() {
                                         )}
                                         <div className="mb-3">
                                             <label className="form-label fw-bold">Role</label>
-                                            
+                                            <input 
+                                                type="text"
+                                                className="form-control"
+                                                value={role}
+                                                onChange={(e) => setRole(e.target.value)}
+                                                placeholder="Enter Role Name"
+                                            />
                                         </div>
+                                        {errors.name && (
+                                            <div className="alert alert-danger">{errors.name[0]}</div>
+                                        )}
                                     </form>
                                 </div>
                             </div>
