@@ -86,6 +86,9 @@ import AparatursIndex from "../views/Admin/Aparaturs/Index";
 // import view aparaturs create
 import AparatursCreate from "../views/Admin/Aparaturs/Create";
 
+// import view aparaturs edit
+import AparatursEdit from "../views/Admin/Aparaturs/Edit";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -331,6 +334,16 @@ export default function RoutesIndex() {
                 element={
                     <PrivateRoutes>
                         <AparatursCreate />
+                    </PrivateRoutes>
+                }
+            />
+
+            {/* private route "/admin/aparaturs/edit" */}
+            <Route
+                path="/admin/aparaturs/edit/:id"
+                element={
+                    <PrivateRoutes>
+                        <AparatursEdit />
                     </PrivateRoutes>
                 }
             />
