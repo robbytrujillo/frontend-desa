@@ -35,6 +35,40 @@ export default function AparatursEdit() {
     // token from cookies
     const token = Cookies.get("token");
 
+    // function fetchDataAparatur
+    const fetchDataAparatur = async () => {
+        await Api.get(`/api/admin/aparaturs/${id}`, {
+            // header
+            headers: {
+                // header Bearer + Token
+                "Authorization": `Bearer ${token}`,
+            },
+        }).then((response) => {
+            // set response data to state
+            setName(response.data.data.name);
+            setRole(response.data.data.role);
+        });
+    };
+
+    // useEffect
+    useEffect(() => {
+        // call function "fetchDataAparatur"
+        fetchDataAparatur();
+    }, []);
+
+    // function "updateAparatur"
+    const updateAparatur = async (e) => {
+        e.preventDefault();
+
+        // define formData
+        const formData = new FormData();
+
+        // append data to "formData"
+        formData.append("image", image);
+        formData.append("name", name);
+        formData.append("role", role);
+        formData.append("_method", "PUT");
+
     return (
         <LayoutAdmin>
             <h1>Halaman Aparaturs Edit</h1>
