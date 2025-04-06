@@ -114,6 +114,17 @@ export default function AparatursEdit() {
                                         <i className="fa fa-pencil"></i> Edit Aparatur
                                     </h6>
                                     <hr />
+                                    <form onSubmit={updateAparatur}>
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Image</label>
+                                            <input
+                                                type="file"
+                                                className="form-control"
+                                                accept="image/"
+                                                onChange={(e) = setImage(e.target.files[0])}
+                                            />
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
