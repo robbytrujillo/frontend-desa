@@ -120,9 +120,31 @@ export default function AparatursEdit() {
                                             <input
                                                 type="file"
                                                 className="form-control"
-                                                accept="image/"
+                                                accept="image/*"
                                                 onChange={(e) = setImage(e.target.files[0])}
                                             />
+                                        </div>
+                                        {errors.image && (
+                                            <div className="alert alert-danger">
+                                                {errors.image[0]}
+                                            </div>
+                                        )}
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Full Name</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                                placeholder="Enter Full Name"
+                                            />
+                                        </div>
+                                        {errors.name && (
+                                            <div className="alert alert-danger">{errors.name[0]}</div>
+                                        )}
+                                        <div className="mb-3">
+                                            <label className="form-label fw-bold">Role</label>
+                                            
                                         </div>
                                     </form>
                                 </div>
