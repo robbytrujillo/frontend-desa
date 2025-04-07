@@ -144,7 +144,27 @@ export default function AparatursEdit() {
                                         )}
                                         <div className="mb-3">
                                             <label className="form-label fw-bold">Role</label>
-                                            
+                                            <input 
+                                                type="text"
+                                                className="form-control"
+                                                value={role}
+                                                onChange={(e) => setRole(e.target.value)}
+                                                placeholder="Enter Role Name"
+                                            />
+                                        </div>
+                                        {errors.name && (
+                                            <div className="alert alert-danger">{errors.name[0]}</div>
+                                        )}
+                                        <div>
+                                            <button
+                                                type="submit"
+                                                className="btn btn-md btn-primary me-2"
+                                            >
+                                                <i className="fa fa-save"></i> Update
+                                            </button>
+                                            <button type="reset" className="btn btn-md bn-warning">
+                                                <i className="fa fa-redo"></i> Reset
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
