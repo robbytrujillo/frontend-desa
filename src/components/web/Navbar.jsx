@@ -11,4 +11,14 @@ export default function Navbar() {
 
     // Javascript split method to get the name of the path in array
     const activeRoute = pathname.split("/");
+
+    return (
+        <>
+            <nav className="navbar navbar-expand-md navbar-light navbar-top d-none d-md-block d-lg-block">
+                <div className="container">
+                    
+                </div>
+            </nav>
+        </>
+    );
 }
