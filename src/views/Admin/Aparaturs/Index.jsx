@@ -19,6 +19,15 @@ import hasAnyPermission from "../../../utils/Permissions";
 //import pagination component
 import Pagination from "../../../components/general/Pagination";
 
+// import react-confirm-alert
+import { confirmAlert } from "react-confirm-alert";
+
+// import CSS react-confirm-alert
+import "react-confirm-alert/src/react-confirm-alert.css";
+
+// import toast
+import toast from "react-hot-toast";
+
 export default function AparatursIndex() {
   //title page
   document.title = "Aparaturs - Desa Digital";
@@ -76,6 +85,42 @@ export default function AparatursIndex() {
 
     //call function "fetchData"
     fetchData(1, e.target.value);
+  };
+
+  // function "deleteAparatur"
+  const deleteAparatur = (id) => {
+    // show confirm alert
+    confirmAlert({
+      title: "Are You Sure ?",
+      message: "want delete this data ?",
+      buttons: [
+        {
+          label: "YES",
+          onClick: async () => {
+            await Api.delete(`/api/admin/aparaturs/${id}`, {
+              // header
+              headers: {
+                // header Bearer + Token
+                Authorization: `Bearer ${token}`,
+              },
+            }).then((response) => {
+              // show toast
+              toast.success(response.data.message, {
+                position: "top-right",
+                duration: 4000,
+              });
+
+              // call function "fetchData"
+              fetchData();
+            });
+          },
+        },
+        {
+          label: "NO",
+          onClick: () => {},
+        },
+      ],
+    });
   };
 
   return (
@@ -159,7 +204,7 @@ export default function AparatursIndex() {
                                   )}
 
                                   {hasAnyPermission(["aparaturs.delete"]) && (
-                                    <button className="btn btn-danger btn-sm">
+                                    <button onClick={() => deleteAparatur(aparatur.id)} className="btn btn-danger btn-sm">
                                       <i className="fa fa-trash"></i>
                                     </button>
                                   )}
