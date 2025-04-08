@@ -40,6 +40,20 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
+
+            <div className="jumbotron-header pb-3">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-9 d-none d-md-block d-lg-block">
+                            <div className="header-logo">
+                                <a href="#">
+                                    <img src="/images/logo-jbg.png" alt="Logo" className="img-fluid" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
