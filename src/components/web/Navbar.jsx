@@ -47,7 +47,7 @@ export default function Navbar() {
                         <div className="col-md-9 d-none d-md-block d-lg-block">
                             <div className="header-logo">
                                 <a href="#">
-                                    <img src="/images/logo-jbg.png" alt="Logo" className="img-fluid" />
+                                    <img src="/images/desa-digi.png" width="110" className="img-responsive" />
                                 </a>
                             </div>
                         </div>
