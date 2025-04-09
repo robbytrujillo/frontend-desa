@@ -11,7 +11,9 @@ export default function footer() {
                             <strong style={{ color: "#ffd22e" }}> DESA DIGITAL </strong>
                         </h5>
                         <hr />
-                        
+                        <div className="text-center">
+                            <img src="/images/desa-digi.png" width="70"></img>
+                        </div>
                     </div>
                 </div>
             </div>
