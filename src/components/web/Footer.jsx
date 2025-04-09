@@ -31,7 +31,15 @@ export default function footer() {
                                 className="text-center align-items-center"
                             />
                         </div>
-                        
+                        <p className="text-justify mt-2 text-left">
+                            Dapatkan info update Desa lebih cepat melalui aplikasi android.
+                            Silahkan unduh melalui playstore.
+                        </p>
+                    </div>
+                    <div className="col-md-4 mb-4 mt-3">
+                        <h5>
+                            KONTAK <strong style={{ color: "#ffd22e" }}>DESA</strong>
+                        </h5>
                     </div>
                 </div>
             </div>
