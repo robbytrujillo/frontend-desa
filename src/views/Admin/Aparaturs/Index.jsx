@@ -190,6 +190,15 @@ export default function AparatursIndex() {
                                 </td>
                                 <td className="text-center">
                                   <img src={aparatur.image} width="50" />
+                                  {/* {preview && (
+                                    <div className="mt-2">
+                                      <img
+                                        src={preview}
+                                        alt="Preview"
+                                        style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                                      />
+                                    </div>
+                                  )} */}
                                 </td>
                                 <td>{aparatur.name}</td>
                                 <td>{aparatur.role}</td>

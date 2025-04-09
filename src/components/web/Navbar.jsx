@@ -50,10 +50,60 @@ export default function Navbar() {
                                     <img src="/images/desa-digi.png" width="110" className="img-responsive" />
                                 </a>
                             </div>
+                            <div className="header-text">
+                                <h2 className="header-school">DESA DIGITAL</h2>
+                                <hr />
+                                <div className="header-address">
+                                    Bojong Nangka Gunung Putri Bogor
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-md-3">
+                            <div 
+                                className="d-none d-md-block d-lg-block"
+                                style={{ marginTop: "60px"  }}
+                            ></div>
+                            <form
+                                className="d-flex"
+                                action="#"
+                                method="GET"
+                            >
+                                <input
+                                    className="form-control border-0 me-2"
+                                    type="search"
+                                    name="q"
+                                    placeholder="cari sesuatu..."
+                                    aria-label="Search"
+                                />
+                                <button className="btn btn-primary-dark" type="submit" style={{ backgroundColor: '#005005', borderColor: '#005005', color: 'white' }}>
+                                    CARI
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <nav className="navbar navbar-expand-md navbar-light navbar-blue nav-web">
+                <div className="container">
+                    <button
+                        className="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarCollapse">
+                        <ul className="navbar-nav me-auto mb-2 mb-md-0">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </>
     );
 }

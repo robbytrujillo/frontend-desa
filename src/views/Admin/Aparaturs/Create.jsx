@@ -29,6 +29,9 @@ export default function AparatursCreate() {
     const [role, setRole] = useState("");
     const [errors, setErros] = useState([]);
 
+    const [preview, setPreview] = useState(null);
+
+
     // token from cookies
     const token = Cookies.get("token");
 
@@ -96,7 +99,12 @@ export default function AparatursCreate() {
                                                 type="file"
                                                 className="form-control"
                                                 accept="image/"
-                                                onChange={(e) => setImage(e.target.files[0])}
+                                                // onChange={(e) => setImage(e.target.files[0])}
+                                                onChange={(e) => {
+                                                    const file = e.target.files[0];
+                                                    setImage(file);
+                                                    setPreview(URL.createObjectURL(file));
+                                                }}
                                             />
                                         </div>
                                         {errors.image && (
