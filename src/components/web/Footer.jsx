@@ -40,6 +40,10 @@ export default function footer() {
                         <h5>
                             KONTAK <strong style={{ color: "#ffd22e" }}>DESA</strong>
                         </h5>
+                        <hr />
+                        <p>
+                            <i className="fa fa-map-maker"></i>
+                        </p>
                     </div>
                 </div>
             </div>
