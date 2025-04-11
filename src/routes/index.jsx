@@ -89,6 +89,13 @@ import AparatursCreate from "../views/Admin/Aparaturs/Create";
 // import view aparaturs edit
 import AparatursEdit from "../views/Admin/Aparaturs/Edit";
 
+//======================================================
+// view web
+//======================================================
+
+// import view home
+import Home from "../views/Web/Home/Index";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -347,6 +354,9 @@ export default function RoutesIndex() {
                     </PrivateRoutes>
                 }
             />
+
+            {/* route */}
+            <Route path="/" element={<Home />} />
         </Routes>
     );
 }
