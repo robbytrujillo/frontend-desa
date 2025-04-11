@@ -43,10 +43,24 @@ export default function footer() {
                         <hr />
                         <p>
                             <i className="fa fa-map-maker"></i>
+                            Bukit Golf Arcadia Blok E Bojong Nangka, Gunung Putri, Bogor, Jawa Barat
+                            <br />
+                            <br />
+                            <i className="fas fa-envelope"></i> info@desa-digital.comments
+                            <br />
+                            <br />
+                            <i className="fas fa-phone"></i> +62 813-6794-3830
                         </p>
                     </div>
                 </div>
             </div>
+            <div className="container-fluid footer-bottom">
+                <div className="row p-3">
+                    <div className="text-center text-white font-weight-bold">
+                        Copyright @ 2025 DESA DIGITAL. All Rights Reserved.
+                    </div> 
+                </div>
+            </div>
         </footer>
-    )
+    );
 }
