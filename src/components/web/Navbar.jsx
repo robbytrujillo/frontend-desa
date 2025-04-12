@@ -28,13 +28,13 @@ export default function Navbar() {
                         <div>
                             IKUTI KAMI :
                             <a href="#" className="ms-2 me-2">
-                                <i className="fa fa-facebook-square text-white fa-lg"></i>
+                                <i className="fab fa-facebook-square text-white fa-lg"></i>
                             </a>
                             <a href="http://" className="ms-2 me-2">
-                                <i className="fa fa-instagram text-white fa-lg"></i>
+                                <i className="fab fa-instagram text-white fa-lg"></i>
                             </a>
                             <a href="#" className="ms-2 me-2">
-                                <i className="fa fa-youtube text-white fa-lg"></i>
+                                <i className="fab fa-youtube text-white fa-lg"></i>
                             </a>
                         </div>
                     </div>
@@ -160,7 +160,7 @@ export default function Navbar() {
                                 }
                                 to="/products"
                                 >
-                                    <i className="fa fa-shooping-bag"></i> PRODUCTS
+                                    <i className="fa fa-shopping-bag"></i> PRODUCTS
                                 </Link>
                             </li>
                             

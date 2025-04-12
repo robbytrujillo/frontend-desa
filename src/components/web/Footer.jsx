@@ -42,8 +42,8 @@ export default function footer() {
                         </h5>
                         <hr />
                         <p>
-                            <i className="fa fa-map-maker"></i>
-                            Bukit Golf Arcadia Blok E Bojong Nangka, Gunung Putri, Bogor, Jawa Barat
+                            <i className="fa fa-map-marker"></i> 
+                             Bukit Golf Arcadia Blok E Bojong Nangka, Gunung Putri, Bogor, Jawa Barat
                             <br />
                             <br />
                             <i className="fas fa-envelope"></i> info@desa-digital.comments
