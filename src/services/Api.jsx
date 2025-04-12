@@ -7,7 +7,8 @@ import Cookies from "js-cookie";
 const Api = axios.create({
 
     // set endpoint API
-    baseURL: 'http://desa-api.robbyilham.com',
+    // baseURL: 'http://desa-api.robbyilham.com',
+    baseURL: 'http://127.0.0.1:8000/',
 
     // set header axios
     headers: {
