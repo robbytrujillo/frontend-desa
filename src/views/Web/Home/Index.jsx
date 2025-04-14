@@ -18,10 +18,20 @@ import Loading from "../../../components/general/Loading";
 //import card product
 import CardProduct from "../../../components/general/CardProduct";
 
+//import card post home
+import CardProduct from "../../../components/general/cardPostHome";
+
 export default function Home() {
+  // title page
+  document.title = "Selamat Datang di Desa Digital, Bogor, Jawa Barat";
+
   //init state products
   const [products, setProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
+
+  // init state posts
+  const [posts, setPosts] = useState([]);
+  const [loadingPosts, setLoadingPosts] = useState(true);
 
   //fetch data products
   const fetchDataProducts = async () => {
@@ -38,10 +48,26 @@ export default function Home() {
     });
   };
 
+  // fetch data posts
+  const fetchDataPosts = async () => {
+    //setLoadingPosts "true"
+    setLoadingPosts(true);
+
+    // fetch data
+    await Api.get("/api/public/posts_home").then((response) => {
+      //assign response to state "posts"
+      setPosts(response.data.data);
+
+      // setLoadingPosts "false"
+      setLoadingPosts(false);
+
   //hook useEffect
   useEffect(() => {
     //call method "fetchDataProducts"
     fetchDataProducts();
+
+    // call method "fetchDataPosts"
+    fetchDataPosts();
   }, []);
 
   return (
