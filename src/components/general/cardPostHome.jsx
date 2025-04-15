@@ -5,7 +5,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // import DateID
-import DateID from '../../utils/DateID.js';
+import DateID from '../../utils/DateID';
 
 export default function CardPostHome(props) {
     return (

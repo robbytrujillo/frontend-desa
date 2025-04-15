@@ -19,17 +19,17 @@ import Loading from "../../../components/general/Loading";
 import CardProduct from "../../../components/general/CardProduct";
 
 //import card post home
-import CardProduct from "../../../components/general/cardPostHome";
+import CardPostHome from "../../../components/general/CardPostHome";
 
 export default function Home() {
-  // title page
-  document.title = "Selamat Datang di Desa Digital, Bogor, Jawa Barat";
+  //title page
+  document.title = "Selamat Datang di Desa Santri, Kab. Jombang, Jawa Timur";
 
   //init state products
   const [products, setProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
 
-  // init state posts
+  //init state posts
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
 
@@ -48,25 +48,27 @@ export default function Home() {
     });
   };
 
-  // fetch data posts
+  //fetch data posts
   const fetchDataPosts = async () => {
     //setLoadingPosts "true"
     setLoadingPosts(true);
 
-    // fetch data
+    //fetch data
     await Api.get("/api/public/posts_home").then((response) => {
       //assign response to state "posts"
       setPosts(response.data.data);
 
-      // setLoadingPosts "false"
+      //setLoadingPosts "false"
       setLoadingPosts(false);
+    });
+  };
 
   //hook useEffect
   useEffect(() => {
     //call method "fetchDataProducts"
     fetchDataProducts();
 
-    // call method "fetchDataPosts"
+    //call method "fetchDataPosts"
     fetchDataPosts();
   }, []);
 
@@ -96,6 +98,37 @@ export default function Home() {
                 slug={product.slug}
                 price={product.price}
                 phone={product.phone}
+              />
+            ))
+          ) : (
+            <AlertDataEmpty />
+          )}
+        </div>
+      </div>
+
+      <div className="container mt-2 mb-4">
+        <div className="row">
+          <div className="col-md-12 mb-3">
+            <div className="section-title">
+              <h4>
+                <i className="fa fa-book"></i>
+                <strong style={{ color: "rgb(209 104 0)" }}> BERITA </strong>
+                TERBARU
+              </h4>
+            </div>
+          </div>
+          {loadingPosts ? (
+            <Loading />
+          ) : posts.length > 0 ? (
+            posts.map((post) => (
+              <CardPostHome
+                key={post.id}
+                image={post.image}
+                slug={post.slug}
+                title={post.title}
+                content={post.content}
+                user={post.user.name}
+                date={post.created_at}
               />
             ))
           ) : (
