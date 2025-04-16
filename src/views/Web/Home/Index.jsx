@@ -23,7 +23,7 @@ import CardPostHome from "../../../components/general/CardPostHome";
 
 export default function Home() {
   //title page
-  document.title = "Selamat Datang di Desa Santri, Kab. Jombang, Jawa Timur";
+  document.title = "Selamat Datang di Desa Digital, Kab. Bogor, Jawa Barat";
 
   //init state products
   const [products, setProducts] = useState([]);
