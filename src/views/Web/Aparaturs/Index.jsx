@@ -17,6 +17,10 @@ import Loading from '../../../components/general/Loading';
 import CardAparatur from '../../../components/general/CardAparatur';
 
 export default function Aparaturs() {
+    // title page
+    document.title = "Aparatur - Desa Santri";
+
+    
     return (
         <LayoutWeb>
             <h1>Halaman Aparaturs</h1>
