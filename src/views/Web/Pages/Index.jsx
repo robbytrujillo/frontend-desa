@@ -18,6 +18,8 @@ import Loading from "../../../components/general/Loading";
 import CardPage from "../../../components/general/CardPage";
 
 export default function WebPagesIndex() {
+    // title page
+    document.title = "Tentang Desa - Desa Digital"
     return (
         <LayoutWeb>
             <h1>Halaman Pages Index</h1>
