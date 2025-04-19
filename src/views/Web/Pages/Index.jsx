@@ -19,7 +19,12 @@ import CardPage from "../../../components/general/CardPage";
 
 export default function WebPagesIndex() {
     // title page
-    document.title = "Tentang Desa - Desa Digital"
+    document.title = "Tentang Desa - Desa Digital";
+
+    // init state
+    const [pages, setPages] = useState([]);
+    const [loadingPages, setLoadingPages] = useState(true);
+    
     return (
         <LayoutWeb>
             <h1>Halaman Pages Index</h1>
