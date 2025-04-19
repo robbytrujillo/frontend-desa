@@ -1,3 +1,7 @@
+
+// import React
+import React, { useState, useEffect } from "react";
+
 // import layout
 import LayoutWeb from "../../../layouts/Web";
 
