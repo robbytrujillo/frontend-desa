@@ -58,7 +58,17 @@ export default function WebPagesIndex() {
                         <hr />
                     </div>
                 </div>
-                
+                <div className="row mt-4">
+                    {loadingPages ? (
+                        <Loading />
+                    ) : pages.length > 0 ? (
+                        pages.map((page) => (
+                            <CardPage key={page.id} title={page.title} slug={page.slug} />
+                        ))
+                    ) : (
+                        <AlertDataEmpty />
+                    )}
+                </div>
             </div>
         </LayoutWeb>
     );
