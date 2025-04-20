@@ -102,6 +102,9 @@ import WebAparatursIndex from "../views/Web/Aparaturs/Index";
 // import view pages index
 import WebPagesIndex from "../views/Web/Pages/Index";
 
+// import view page show
+import WebPagesShow from "../views/Web/Pages/Show";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -369,6 +372,9 @@ export default function RoutesIndex() {
 
             {/* route "/pages" */}
             <Route path="/pages" element={<WebPagesIndex />} />
+
+            {/* route "/pages/:slug" */}
+            <Route path="/pages/:slug" element={<WebPagesShow />} />
         </Routes>
     );
 }
