@@ -31,7 +31,7 @@ export default function WebPagesShow() {
       setPage(response.data.data);
 
       //title page
-      document.title = `${response.data.data.title} - Desa Santri`;
+      document.title = `${response.data.data.title} - Desa Digital`;
 
       //setLoadingPages "false"
       setLoadingPage(false);

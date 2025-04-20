@@ -105,6 +105,9 @@ import WebPagesIndex from "../views/Web/Pages/Index";
 // import view page show
 import WebPagesShow from "../views/Web/Pages/Show";
 
+// import view photos index
+import WebPhotosIndex from "../views/Web/Photos/Index";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -375,6 +378,9 @@ export default function RoutesIndex() {
 
             {/* route "/pages/:slug" */}
             <Route path="/pages/:slug" element={<WebPagesShow />} />
+
+            {/* route "/photos" */}
+            <Route path="/photos" element={<WebPhotosIndex />} />
         </Routes>
     );
 }
