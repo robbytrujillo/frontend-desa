@@ -1,5 +1,5 @@
 // import React
-import React, { useState, useEffect } from react;
+import React, { useState, useEffect } from "react";
 
 // import layouts
 import LayoutWeb from "../../../layouts/Web";
@@ -11,7 +11,7 @@ import Api from "../../../services/api";
 import { useParams } from "react-router-dom";
 
 // import component loading
-import Loading from "../../../components/Loading";
+import Loading from "../../../components/general/Loading";
 
 export default function WebPagesShow() {
     // init state
@@ -48,6 +48,25 @@ export default function WebPagesShow() {
     return (
         <LayoutWeb>
             {/* <h1>Halaman Page Show</h1> */}
+            <div className="container mt-4 mb-3">
+                {loadingPage ? (
+                    <Loading />
+                ) : (
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h4 className="text-uppercase">
+                            <i className="fa fa-info-circle"></i> {page.title}
+                            </h4>
+                            <hr />
+                            <div className="card border-0 shadow-sm rounded-3">
+                                <div className="card-body post-content">
+                                    <p dangerouslySetInnerHTML={{  __html: page.content }}></p>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                )}
+            </div>
         </LayoutWeb>
     );
 }
