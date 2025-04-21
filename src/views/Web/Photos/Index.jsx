@@ -13,8 +13,6 @@ import AlertDataEmpty from "../../../components/general/AlertDataEmpty";
 // import component loading
 import Loading from "../../../components/general/CardPhoto";
 
-
-
 export default function WebPhotosIndex() {
     return (
         <LayoutWeb>
