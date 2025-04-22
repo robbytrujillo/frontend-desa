@@ -43,12 +43,43 @@ export default function WebPhotosIndex() {
         const page = pageNumber ? pageNumber : pagination.currentPage;
 
         await Api.get(`/api/public/photos?page=${page}`).then((response) => {
-            
+            // assign response to state "photos"
+            setPhotos(response.data.data.data);
+
+            // set data pagination to state "pagination"
+            setPagination(() => ({
+                currentPage: response.data.current_page,
+                perPage: response.data.per_page,
+                total: response.data.total,
+            }));
+
+            // setLoadingPhotos "false"
+            setLoadingPhoto(false);
         })
     }
+
+    // hook useEffect
+    useEffect(() => {
+        // call method "fetchDataPhotos"
+        fetchDataPhotos();
+    }, []);
+
     return (
         <LayoutWeb>
-            <h1>Halaman Photos Index</h1>
+            {/* <h1>Halaman Photos Index</h1> */}
+            <div className="container mt-4 mb-3">
+                <div className="row">
+                    <div className="col-md-12">
+                        <h5 className="text-uppercase">
+                            <i className="fa fa-images"></i> GALERI PHOTO
+                        </h5>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row mt-4">
+                    
+                </div>
+            </div>
         </LayoutWeb>
     );
 }
