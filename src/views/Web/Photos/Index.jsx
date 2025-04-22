@@ -11,9 +11,41 @@ import Api from "../../../services/Api";
 import AlertDataEmpty from "../../../components/general/AlertDataEmpty";
 
 // import component loading
-import Loading from "../../../components/general/CardPhoto";
+import Loading from "../../../components/general/Loading";
+
+// import component card photo
+import CardPhoto from '../../../components/general/CardPhoto';
+
+// import pagination component
+import Pagination from "../../../components/general/Pagination";
 
 export default function WebPhotosIndex() {
+    // title page
+    document.title = "Galeri Foto - Desa Digital";
+
+    // init state
+    const [photos, setPhotos] = useState([]);
+    const [loadingPhoto, setLoadingPhoto] = useState(true);
+
+    // define state "pagination"
+    const [pagination, setPagination] = useState({
+        currentPage: 0, 
+        perPage: 0, 
+        total: 0,
+    });
+
+    // fetch data photos
+    const fetchDataPhotos = async (pageNumber = 1) => {
+        // setLoadingPhoto "true"
+        setLoadingPhoto(true);
+
+        // define variable "page"
+        const page = pageNumber ? pageNumber : pagination.currentPage;
+
+        await Api.get(`/api/public/photos?page=${page}`).then((response) => {
+            
+        })
+    }
     return (
         <LayoutWeb>
             <h1>Halaman Photos Index</h1>
