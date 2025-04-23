@@ -77,8 +77,27 @@ export default function WebPhotosIndex() {
                     </div>
                 </div>
                 <div className="row mt-4">
-                    
+                    {loadingPhoto ? (
+                        <Loading />
+                    ) : photos.length > 0 ? (
+                        photos.map((photo) => (
+                            <CardPhoto
+                                key = {photo.id} 
+                                image = {photo.image}
+                                caption = {photo.caption}
+                            />
+                        ))
+                    ) : (
+                        <AlertDataEmpty />
+                    )}
                 </div>
+                <Pagination
+                    currentPage={pagination.currentPage} 
+                    perPage={pagination.perPage}
+                    total={pagination.total}  
+                    onChange={(pageNumber) => fetchDataPhotos(pageNumber)}
+                    position="center"
+                />
             </div>
         </LayoutWeb>
     );
