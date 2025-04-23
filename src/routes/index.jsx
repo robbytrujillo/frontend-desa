@@ -108,6 +108,9 @@ import WebPagesShow from "../views/Web/Pages/Show";
 // import view photos index
 import WebPhotosIndex from "../views/Web/Photos/Index";
 
+// import view posts index
+import WebPostsIndex from "../views/Web/Posts/Index";
+
 export default function RoutesIndex() {
     return (
         <Routes>
@@ -381,6 +384,9 @@ export default function RoutesIndex() {
 
             {/* route "/photos" */}
             <Route path="/photos" element={<WebPhotosIndex />} />
+
+            {/* route "/posts" */}
+            <Route path="/posts" element={<WebPostsIndex />} />
         </Routes>
     );
 }
