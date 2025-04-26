@@ -113,6 +113,7 @@ import WebPostsIndex from "../views/Web/Posts/Index";
 
 // import view posy show
 import WebPagesShow from "../views/Web/Posts/Show";
+import WebPostsShow from "../views/Web/Posts/Show";
 
 export default function RoutesIndex() {
     return (
@@ -390,6 +391,9 @@ export default function RoutesIndex() {
 
             {/* route "/posts" */}
             <Route path="/posts" element={<WebPostsIndex />} />
+
+            {/* route "/posts/:slug" */}
+            <Route path="/posts/:slug" element={<WebPostsShow />} />
         </Routes>
     );
 }
