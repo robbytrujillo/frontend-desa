@@ -103,5 +103,5 @@ export default function WebPostsIndex() {
                 />
             </div>
         </LayoutWeb>
-    )
+    );
 }
