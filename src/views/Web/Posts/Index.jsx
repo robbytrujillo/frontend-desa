@@ -63,10 +63,45 @@ export default function WebPostsIndex() {
         // call method "fetchDataPosts"
         fetchDataPosts();
     }, []);
-    
+
     return (
         <LayoutWeb>
-            <h1>Halaman Posts Index</h1>
+            {/* <h1>Halaman Posts Index</h1> */}
+            <div className="container mt-4 mb-3">
+                <div className="row">
+                    <div className="col-md-12">
+                        <h5 className="text-uppercase">
+                            <i className="fa fa-book"></i> BERITA DESA
+                        </h5>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row mt-4">
+                    {loadingPost ? (
+                        <Loading />
+                    ) : posts.length > 0 ? (
+                        posts.map((post) => (
+                            <CardPost
+                                key={post.id}
+                                image={post.image}
+                                slug={post.slug}
+                                title={post.title}
+                                content={post.content}
+                                date={post.created_at}
+                            />
+                        ))
+                    ) : (
+                        <AlertDataEmpty />
+                    )}
+                </div>
+                <Pagination
+                    currentPage={pagination.currentPage}
+                    perPage={pagination.perPage}
+                    total={pagination.total}
+                    onChange={(pageNumber) => fetchDataPosts(pageNumber)}
+                    position="center"
+                />
+            </div>
         </LayoutWeb>
     )
 }
