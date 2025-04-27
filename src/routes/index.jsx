@@ -111,8 +111,7 @@ import WebPhotosIndex from "../views/Web/Photos/Index";
 // import view posts index
 import WebPostsIndex from "../views/Web/Posts/Index";
 
-// import view posy show
-import WebPagesShow from "../views/Web/Posts/Show";
+// import view post show
 import WebPostsShow from "../views/Web/Posts/Show";
 
 export default function RoutesIndex() {
