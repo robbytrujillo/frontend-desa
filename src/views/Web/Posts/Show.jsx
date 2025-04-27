@@ -53,9 +53,14 @@ export default function WebPostsShow() {
 
         // fetch data
         await Api.get("/api/public/pstshome").then((response) => {
-            
-        })
-    }
+            // assign response to state "posts"
+            setPosts(response.data.data);
+
+            // setLoadingPosts "false"
+            setLoadingPosts(false);
+        });
+    };
+    
     return (
         <LayoutWeb>
             <h1>Halaman Post Show</h1>
