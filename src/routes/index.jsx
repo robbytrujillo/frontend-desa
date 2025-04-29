@@ -396,6 +396,9 @@ export default function RoutesIndex() {
 
             {/* route "/posts/:slug" */}
             <Route path="/posts/:slug" element={<WebPostsShow />} />
+
+            {/* route "/products" */}
+            <Route path="/products" element={<WebProductsIndex />} />
         </Routes>
     );
 }
