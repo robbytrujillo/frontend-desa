@@ -114,6 +114,9 @@ import WebPostsIndex from "../views/Web/Posts/Index";
 // import view post show
 import WebPostsShow from "../views/Web/Posts/Show";
 
+// import view products index
+import WebProductsIndex from "../views/Web/Products/Index";
+
 export default function RoutesIndex() {
     return (
         <Routes>
