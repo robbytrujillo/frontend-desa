@@ -21,10 +21,10 @@ import Pagination from "../../../components/general/Pagination";
 
 export default function WebProductsIndex() {
     // title page
-    document.title = "Produk Desa - Desa Santri";
+    document.title = "Produk Desa - Desa Digital";
 
     // init state
-    const [product, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loadingProduct, setLoadingProduct] = useState(true);
 
     // define state "pagination"
@@ -37,7 +37,7 @@ export default function WebProductsIndex() {
     // fetch data products
     const fetchDataProducts = async (pageNumber = 1) => {
         // setLoadingPhoto "true"
-        setLoadingProducts(true);
+        setLoadingProduct(true);
 
         // define variable "page"
         const page = pageNumber ? pageNumber : pagination.currentPage;
@@ -79,8 +79,8 @@ export default function WebProductsIndex() {
                 <div className="row mt-4">
                     {loadingProduct ? (
                         <Loading />
-                    ) : WebProductsIndex.length > 0 ? (
-                        WebProductsIndex.map((product) => (
+                    ) : products.length > 0 ? (
+                       products.map((product) => (
                             <CardProduct
                                 key={product.id}
                                 image={product.image}
