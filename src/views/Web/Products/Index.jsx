@@ -66,7 +66,42 @@ export default function WebProductsIndex() {
 
     return (
         <LayoutWeb>
-            <h1>Halaman Products Index</h1>
+            {/* <h1>Halaman Products Index</h1> */}
+            <div className="container mt-4 mb-3">
+                <div className="row">
+                    <div className="col-md-12">
+                        <h5 className="text-uppercase">
+                            <i className="fa fa-shopping-bag"></i> PRODUK DESA
+                        </h5>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row mt-4">
+                    {loadingProduct ? (
+                        <Loading />
+                    ) : WebProductsIndex.length > 0 ? (
+                        WebProductsIndex.map((product) => (
+                            <CardProduct
+                                key={product.id}
+                                image={product.image}
+                                title={product.title}
+                                slug={product.slug}
+                                price={product.price}
+                                phone={product.phone}
+                            />
+                        ))
+                    ) : (
+                        <AlertDataEmpty />
+                    )}
+                </div>
+                <Pagination
+                    currentPage={pagination.currentPage}
+                    perPage={pagination.perPage}
+                    total={pagination.total}
+                    onChange={(pageNumber) =>fetchDataProducts(pageNumber)}
+                    position="center"
+                />
+            </div>
         </LayoutWeb>
     )
 }
