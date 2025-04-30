@@ -402,6 +402,9 @@ export default function RoutesIndex() {
 
             {/* route "/products" */}
             <Route path="/products" element={<WebProductsIndex />} />
+
+            {/* route "/products/:slug" */}
+            <Route path="/products/:slug" element={<WebProductsShow />} /> 
         </Routes>
     );
 }
