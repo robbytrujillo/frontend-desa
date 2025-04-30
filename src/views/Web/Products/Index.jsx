@@ -20,6 +20,50 @@ import CardProduct from "../../../components/general/CardProduct";
 import Pagination from "../../../components/general/Pagination";
 
 export default function WebProductsIndex() {
+    // title page
+    document.title = "Produk Desa - Desa Santri";
+
+    // init state
+    const [product, setProducts] = useState([]);
+    const [loadingProduct, setLoadingProduct] = useState(true);
+
+    // define state "pagination"
+    const [pagination, setPagination] = useState({
+        currentPage: 0,
+        perPage: 0,
+        total: 0,
+    });
+
+    // fetch data products
+    const fetchDataProducts = async (pageNumber = 1) => {
+        // setLoadingPhoto "true"
+        setLoadingProducts(true);
+
+        // define variable "page"
+        const page = pageNumber ? pageNumber : pagination.currentPage;
+
+        await Api.get(`/api/public/products?page=${page}`).then((response) => {
+            // assign response to state "products"
+            setProducts(response.data.data.data);
+
+            // set data pagination to state "pagination"
+            setPagination(() => ({
+                currentPage: response.data.data.current_page,
+                perPage: response.data.data.per_page,
+                total: response.data.data.total,
+            }));
+
+            // setLoadingProducts "false"
+            setLoadingProduct(false)
+        })
+    };
+
+    // hook useEffect
+    useEffect(() => {
+        // call method "fetchDataProducts"
+        fetchDataProducts();
+    }, []);
+
     return (
         <LayoutWeb>
             <h1>Halaman Products Index</h1>
